@@ -14,10 +14,12 @@ import de.comobi.ui.theme.DefaultTheme
 import androidx.compose.material.Text
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.logger.ChatLogLevel
+import io.getstream.chat.android.offline.ChatDomain
 
 @Composable
 fun ChatScreen (navController: NavController) {
-    
     Scaffold(backgroundColor = MaterialTheme.colors.primary)
     {
         Column(

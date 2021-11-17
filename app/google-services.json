@@ -1,20 +1,21 @@
 {
   "project_info": {
-    "project_number": "451326160097",
-    "project_id": "signinprocess-a8ce7",
-    "storage_bucket": "signinprocess-a8ce7.appspot.com"
+    "project_number": "458624773614",
+    "firebase_url": "https://d2d-communication-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "d2d-communication",
+    "storage_bucket": "d2d-communication.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:451326160097:android:04ef7eaa37b2b63eee5ba0",
+        "mobilesdk_app_id": "1:458624773614:android:17f4455c388a103321f2ff",
         "android_client_info": {
           "package_name": "de.comobi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "451326160097-g2jdtceum00nlvjqet8h7cgr02168s5s.apps.googleusercontent.com",
+          "client_id": "458624773614-eru1ps18t6edu4fl5mm25t42ulclpr63.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "de.comobi",
@@ -22,27 +23,27 @@
           }
         },
         {
-          "client_id": "451326160097-ams67l9pcd0u15vr2s6o6ua9s75pet1o.apps.googleusercontent.com",
+          "client_id": "458624773614-8o59m0tkl9bfg8s1jhsp5nokhh8dtf8m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyApp6cJZ1O_bqiYTeT-YNfBANcjgzA6KLY"
+          "current_key": "AIzaSyAjPSgj1To7Ne4zhHMYqsvns3jQtCcgdaI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "451326160097-ams67l9pcd0u15vr2s6o6ua9s75pet1o.apps.googleusercontent.com",
+              "client_id": "458624773614-8o59m0tkl9bfg8s1jhsp5nokhh8dtf8m.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "451326160097-s6mj454mbqedk230bb96do352e136mc1.apps.googleusercontent.com",
+              "client_id": "458624773614-sr7u1asns707qbm41b2j1f4pdlaal19m.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.davidkorn.SignInPage"
+                "bundle_id": "co.code.D2D"
               }
             }
           ]

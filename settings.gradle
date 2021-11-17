@@ -3,7 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {url "https://jitpack.io" } // Add Jitpack
+        maven {url "https://jitpack.io" } // Chat SDK
     }
 }
 rootProject.name = "COMOBI"

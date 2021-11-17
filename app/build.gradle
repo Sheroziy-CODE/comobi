@@ -49,6 +49,11 @@ android {
 
 dependencies {
 
+    //dependencies for the chat and icons
+    def stream_version = "4.16.0"
+    implementation "io.getstream:stream-chat-android-compose:$stream_version-beta"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+
 
     // Google / Jetpack dependencies
     implementation "androidx.compose.runtime:runtime:$compose_version"

@@ -1,5 +1,5 @@
 package de.comobi
 
-data class Users(val email: String? = null, val username: String? = null, val carmodel: String? = null, val password: String? = null){
+data class Users(val email: String? = null, val username: String? = null, val carmodel: String? = null){
 
 }

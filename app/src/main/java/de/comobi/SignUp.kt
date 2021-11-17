@@ -196,8 +196,8 @@ fun SignUpScreen (navController: NavController) {
 
                                             // Get the database instance and store into object
                                             // getReference() get the refrence if the refrence is already creted... if reference is not created then it will create a new refrence here
-                                            var fDatabase: DatabaseReference = FirebaseDatabase.getInstance("https://signinprocess-a8ce7-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users/$uid")
-                                            val user = Users(email, username, carmodel, password)
+                                            var fDatabase: DatabaseReference = FirebaseDatabase.getInstance("https://d2d-communication-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users/$uid")
+                                            val user = Users(email, username, carmodel)
                                             fDatabase.setValue(user) // assign value to the particular refrence.
                                                 .addOnSuccessListener {
                                                     Log.d("Register Activity", "User saved to database")
@@ -208,7 +208,7 @@ fun SignUpScreen (navController: NavController) {
                                                 Toast.LENGTH_SHORT
                                             ).show()
 
-                                            navController.popBackStack()
+                                            val popBackStack = navController.popBackStack()
                                             navController.navigate("SignIn"){
                                                 popUpTo(navController.graph.startDestinationId)
                                                 launchSingleTop = true
@@ -229,7 +229,7 @@ fun SignUpScreen (navController: NavController) {
                             shape = RoundedCornerShape(16.dp)
                         )
                         {
-                            Text(text = "Create accounth")
+                            Text(text = "Create account")
                         }
                     }
                 }
