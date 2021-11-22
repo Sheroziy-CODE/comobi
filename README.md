@@ -26,12 +26,15 @@ Installation:
 
 1. Download the latest version of Android Studio Arctic Fox
 
+2. Open Android studio and install Google Play Licensing Library and Google Play Services
+   Go to Tools -> SDK Manager -> SDK Tools - choose and install what mentioned above.
 
-2. Clone the repo
+3. Clone the repo
    
    git clone https://github.com/Sheroziy-CODE/comobi.git
    
-3. Open the project with Android Studio Arctic Fox
+4. Open the project with Android Studio Arctic Fox
+
   
 
 
