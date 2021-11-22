@@ -1,10 +1,13 @@
 package de.comobi
 
 
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -27,13 +30,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.comobi.ui.theme.DefaultTheme
 import androidx.compose.material.Text
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 
+/**
+ SignIn will pass data to Firebase to check and proceed if the user exist.
+ NOTE: Forgot Password? is not implemented yet
+ **/
+
+@ExperimentalComposeUiApi
 @Composable
 fun SignInScreen (navController: NavController) {
 
@@ -55,6 +66,7 @@ fun SignInScreen (navController: NavController) {
 
     val context = LocalContext.current
 
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Scaffold(backgroundColor = MaterialTheme.colors.primary)
     {
@@ -93,6 +105,9 @@ fun SignInScreen (navController: NavController) {
                             value = email,
                             onValueChange = {email = it},
                             label = { Text(text = "Email") },
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             trailingIcon =
                             {
                                 if(email.isNotBlank())
@@ -110,6 +125,7 @@ fun SignInScreen (navController: NavController) {
                             label = { Text(text = "Password")},
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                             trailingIcon =
                             {
@@ -196,7 +212,7 @@ fun SignInScreen (navController: NavController) {
 }
 
 
-
+@ExperimentalComposeUiApi
 @Preview(showBackground = true)
 @Composable
 fun SignInPreview() {

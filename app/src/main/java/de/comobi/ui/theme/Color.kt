@@ -3,8 +3,8 @@ package de.comobi.ui.theme
 import androidx.compose.ui.graphics.Color
 
 
-val MainColor = Color(0xFFFF9800)
-
+//val MainColor = Color(0xFFFF9800)
+val MainColor = Color(0xFF673AB7)
 
 
 /*

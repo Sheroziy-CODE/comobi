@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -27,7 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.comobi.ui.theme.DefaultTheme
 import androidx.compose.material.Text
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +39,11 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
+/**
+Registration page is going to connect to FirabaseAuth and check tha the user has registered and if not proceed with success registration
+ **/
+
+@ExperimentalComposeUiApi
 @Composable
 fun SignUpScreen (navController: NavController) {
 
@@ -47,7 +55,7 @@ fun SignUpScreen (navController: NavController) {
         mutableStateOf("")
     }
 
-    var carmodel by remember{
+    var carModel by remember{
         mutableStateOf("")
     }
 
@@ -60,10 +68,12 @@ fun SignUpScreen (navController: NavController) {
     }
 
     val isFormValid by derivedStateOf {
-        email.isNotBlank() && username.isNotBlank() &&  carmodel.isNotBlank() && password.isNotBlank()
+        email.isNotBlank() && username.isNotBlank() &&  carModel.isNotBlank() && password.isNotBlank()
     }
 
     val context = LocalContext.current
+
+    val keyboardController = LocalSoftwareKeyboardController.current
 
 
     Scaffold(backgroundColor = MaterialTheme.colors.primary)
@@ -105,6 +115,8 @@ fun SignUpScreen (navController: NavController) {
                             value = email,
                             onValueChange = { email = it },
                             label = { Text(text = "Email") },
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             trailingIcon =
                             {
                                 if (email.isNotBlank())
@@ -122,6 +134,8 @@ fun SignUpScreen (navController: NavController) {
                             value = username,
                             onValueChange = { username = it },
                             label = { Text(text = "Name") },
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             trailingIcon =
                             {
                                 if (username.isNotBlank())
@@ -136,13 +150,15 @@ fun SignUpScreen (navController: NavController) {
                         )
                         OutlinedTextField(
                             modifier = Modifier.fillMaxWidth(),
-                            value = carmodel,
-                            onValueChange = { carmodel = it },
+                            value = carModel,
+                            onValueChange = { carModel = it },
                             label = { Text(text = "Car Model") },
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             trailingIcon =
                             {
-                                if (carmodel.isNotBlank())
-                                    IconButton(onClick = { carmodel = "" })
+                                if (carModel.isNotBlank())
+                                    IconButton(onClick = { carModel = "" })
                                     {
                                         Icon(
                                             imageVector = Icons.Filled.Clear,
@@ -161,6 +177,7 @@ fun SignUpScreen (navController: NavController) {
                                 keyboardType = KeyboardType.Password,
                                 imeAction = ImeAction.Done
                             ),
+                            keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                             visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                             trailingIcon =
                             {
@@ -197,7 +214,7 @@ fun SignUpScreen (navController: NavController) {
                                             // Get the database instance and store into object
                                             // getReference() get the refrence if the refrence is already creted... if reference is not created then it will create a new refrence here
                                             var fDatabase: DatabaseReference = FirebaseDatabase.getInstance("https://d2d-communication-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users/$uid")
-                                            val user = Users(email, username, carmodel)
+                                            val user = Users(email, username, carModel)
                                             fDatabase.setValue(user) // assign value to the particular refrence.
                                                 .addOnSuccessListener {
                                                     Log.d("Register Activity", "User saved to database")
@@ -239,7 +256,7 @@ fun SignUpScreen (navController: NavController) {
 }
 
 
-
+@ExperimentalComposeUiApi
 @Preview(showBackground = true)
 @Composable
 fun SignUpPreview() {
